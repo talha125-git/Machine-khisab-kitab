@@ -77,7 +77,7 @@ export default function CreateKitabModal({ onClose, onCreated, kitabCount }) {
             <button
               id="confirm-create-btn"
               onClick={handleCreate}
-              className="flex-1 rounded-lg bg-gradient-to-r from-blue-500 to-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition-all duration-200 hover:from-blue-600 hover:to-blue-700 hover:shadow-blue-500/30 cursor-pointer"
+              className="flex-1 rounded-lg bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition-all duration-200 hover:bg-blue-700 hover:shadow-blue-500/30 cursor-pointer"
             >
               ✦ Create Kitab
             </button>

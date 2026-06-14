@@ -163,7 +163,7 @@ export default function KitabView({ kitab: initialKitab, onDeleted, onUpdated })
 
       {/* Completed message */}
       {kitab.completed && (
-        <div className="mt-6 rounded-2xl border border-ledger-500/30 bg-gradient-to-r from-ledger-900/40 to-ledger-800/20 p-6 text-center">
+        <div className="mt-6 rounded-2xl border border-blue-200 bg-blue-50 p-6 text-center">
           <div className="text-4xl mb-2">🎉</div>
           <h3 className="font-display text-xl font-bold text-ledger-300">
             Kitab Completed!

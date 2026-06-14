@@ -59,7 +59,7 @@ export default function Sidebar({
           <button
             id="new-kitab-btn"
             onClick={onCreateNew}
-            className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-ledger-600 to-ledger-700 px-4 py-3 text-sm font-semibold text-white shadow-lg shadow-ledger-900/50 transition-all duration-200 hover:from-ledger-500 hover:to-ledger-600 hover:shadow-ledger-800/50 active:scale-[0.98] cursor-pointer"
+            className="flex w-full items-center justify-center gap-2 rounded-xl bg-blue-600 px-4 py-3 text-sm font-semibold text-white shadow-md shadow-blue-500/20 transition-all duration-200 hover:bg-blue-700 hover:shadow-blue-500/30 active:scale-[0.98] cursor-pointer"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
               <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />

@@ -86,8 +86,8 @@ export default function SummaryPanel({ kitab }) {
           <div
             className={`h-full rounded-full transition-all duration-700 ease-out ${
               stats.progress >= 100
-                ? "bg-gradient-to-r from-green-600 via-green-500 to-green-500"
-                : "bg-gradient-to-r from-blue-600 via-ledger-500 to-ledger-500"
+                ? "bg-green-500"
+                : "bg-blue-600"
             }`}
             style={{ width: `${stats.progress}%` }}
           >

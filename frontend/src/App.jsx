@@ -170,7 +170,7 @@ export default function App() {
               <button
                 id="empty-state-create-btn"
                 onClick={() => setShowCreateModal(true)}
-                className="mt-6 flex items-center text-white gap-2 rounded-xl bg-gradient-to-b from-blue-500 via-blue-600 to-amber-400 bg-[length:500%_200%] bg-top px-6 py-3 text-sm font-semibold text-green-900 shadow-lg shadow-green-300/30 transition-all duration-500 ease-in-out hover:bg-bottom hover:shadow-green-300/90 active:scale-95 cursor-pointer"
+                className="mt-6 flex items-center text-white gap-2 rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold shadow-md shadow-blue-500/20 transition-all duration-200 hover:bg-blue-700 hover:shadow-blue-500/30 active:scale-95 cursor-pointer"
               >
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
