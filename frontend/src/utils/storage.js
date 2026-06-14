@@ -1,4 +1,4 @@
-const API_URL = `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}/api/kitabs`;
+const API_URL = import.meta.env.PROD ? '/api/kitabs' : 'http://localhost:5000/api/kitabs';
 
 function getHeaders() {
   const user = JSON.parse(localStorage.getItem('khisab_user') || 'null');

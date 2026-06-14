@@ -8,7 +8,7 @@ export default function ConfirmDialog({ message, onConfirm, onCancel }) {
         onClick={onCancel}
       />
       <div className="relative w-full max-w-sm animate-fade-in-up">
-        <div className="rounded-2xl border border-slate-200 bg-slate-50 p-6 shadow-2xl shadow-slate-300/50">
+        <div className="rounded-2xl border border-slate-200 bg-slate-200 p-6 shadow-2xl shadow-slate-300/50">
           <div className="mb-4 flex justify-center">
             <div className="flex h-14 w-14 items-center justify-center rounded-full bg-red-50 ring-4 ring-red-100/50">
               <svg className="h-7 w-7 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
