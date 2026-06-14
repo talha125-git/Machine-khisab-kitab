@@ -15,15 +15,6 @@ const PORT = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
 
-// ─── Routes ─────────────────────────────────────────────
-app.use('/api/auth', authRoutes);
-app.use('/api/kitabs', kitabsRoutes);
-
-// Health check
-app.get('/', (req, res) => {
-  res.json({ status: 'Backend running ✅' });
-});
-
 // ─── MongoDB Connection ─────────────────────────────────
 let isConnected = false;
 
@@ -38,7 +29,22 @@ const connectDB = async () => {
   }
 };
 
-// Only connect and listen if NOT running on Vercel
+// Connect to DB BEFORE any route runs (critical for Vercel serverless)
+app.use(async (req, res, next) => {
+  await connectDB();
+  next();
+});
+
+// ─── Routes ─────────────────────────────────────────────
+app.use('/api/auth', authRoutes);
+app.use('/api/kitabs', kitabsRoutes);
+
+// Health check
+app.get('/', (req, res) => {
+  res.json({ status: 'Backend running ✅' });
+});
+
+// Only listen locally (Vercel handles this in production)
 if (process.env.NODE_ENV !== 'production') {
   connectDB().then(() => {
     app.listen(PORT, () => {
@@ -46,11 +52,5 @@ if (process.env.NODE_ENV !== 'production') {
     });
   });
 }
-
-// For Vercel serverless functions, we connect on every request
-app.use(async (req, res, next) => {
-  await connectDB();
-  next();
-});
 
 export default app;
