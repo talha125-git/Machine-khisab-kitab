@@ -38,12 +38,12 @@ export default function KitabView({ kitab: initialKitab, onDeleted, onUpdated })
       // Check if all 15 days are completed
       const stats = getKitabStats(updated);
       updated.completed = (stats.daysCompleted === 15);
-      
+
       updatedKitab = updated;
       if (onUpdated) onUpdated(updated);
       return updated;
     });
-    
+
     // Save to backend
     if (updatedKitab) {
       await saveKitab(updatedKitab);
@@ -52,7 +52,7 @@ export default function KitabView({ kitab: initialKitab, onDeleted, onUpdated })
 
   const handleReset = async () => {
     setShowConfirm(false);
-    
+
     let updatedKitab;
     setKitab(prev => {
       const updated = { ...prev };
@@ -63,12 +63,12 @@ export default function KitabView({ kitab: initialKitab, onDeleted, onUpdated })
         saved: false
       }));
       updated.completed = false;
-      
+
       updatedKitab = updated;
       if (onUpdated) onUpdated(updated);
       return updated;
     });
-    
+
     if (updatedKitab) {
       await saveKitab(updatedKitab);
     }
@@ -79,11 +79,11 @@ export default function KitabView({ kitab: initialKitab, onDeleted, onUpdated })
       {/* Kitab Header */}
       <div className="mb-6 flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div>
-          <h2 className="font-display text-xl font-bold text-paper sm:text-2xl">
-            📖 {kitab.title}
+          <h2 className="text-xl font-bold text-paper sm:text-2xl">
+            📖 Kitab #{kitab.number}
           </h2>
           <p className="mt-1 text-sm text-ink-muted">
-            {kitab.startDate} → {kitab.endDate}
+            From <span className="text-paper text-lg font-bold">{new Date(kitab.startDate + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}</span> to <span className="text-paper text-lg font-bold">{new Date(kitab.endDate + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
           </p>
         </div>
 
@@ -97,7 +97,7 @@ export default function KitabView({ kitab: initialKitab, onDeleted, onUpdated })
             </svg>
             Download PDF
           </button>
-          
+
           {!isReadOnly && (
             <button
               id="delete-kitab-btn"
@@ -136,7 +136,7 @@ export default function KitabView({ kitab: initialKitab, onDeleted, onUpdated })
               Today Enter
             </button>
           )}
-          
+
           {visibleCount > lastSaved && (
             <button
               onClick={() => setManualVisibleCount(0)}

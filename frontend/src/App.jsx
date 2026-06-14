@@ -19,7 +19,7 @@ export default function App() {
     try {
       const savedUser = localStorage.getItem('khisab_user');
       if (savedUser) setUser(JSON.parse(savedUser));
-    } catch {}
+    } catch { }
     setAuthChecked(true);
   }, []);
 
@@ -37,36 +37,36 @@ export default function App() {
   useEffect(() => {
     if (!user) return;
     let isMounted = true;
-    
+
     const loadKitabs = async () => {
       const kitabsArray = await getKitabList();
       if (!isMounted) return;
-      
+
       const loadedKitabs = {};
       const loadedIds = [];
-      
+
       kitabsArray.forEach(k => {
         loadedKitabs[k.id] = k;
         loadedIds.push(k.id);
       });
-      
+
       setKitabs(loadedKitabs);
       setKitabList(loadedIds);
-      
+
       if (loadedIds.length > 0 && !activeKitabId) {
         setActiveKitabId(loadedIds[0]);
       }
     };
-    
+
     loadKitabs();
-    
+
     return () => { isMounted = false; };
   }, [user, activeKitabId]);
 
   const handleCreateKitab = useCallback(async (startDate) => {
     const newKitab = await createKitab(startDate, kitabList.length);
     if (!newKitab) return; // Error creating
-    
+
     setKitabs(prev => ({ [newKitab.id]: newKitab, ...prev }));
     setKitabList(prev => [newKitab.id, ...prev]);
     setActiveKitabId(newKitab.id);
@@ -76,7 +76,7 @@ export default function App() {
   const handleDeleteKitab = useCallback(async (id) => {
     const success = await deleteKitab(id);
     if (!success) return;
-    
+
     setKitabs(prev => {
       const next = { ...prev };
       delete next[id];
@@ -163,13 +163,14 @@ export default function App() {
                 حساب کتاب – مشین نمبر ڈیٹا
               </p>
               <p className="mt-4 max-w-md text-sm text-ink-muted">
-                Track your 15-day income cycles with a traditional ledger-style interface. 
+                Track your 15-day income cycles with a traditional ledger-style interface.
+                Track your 15-day income cycles with a traditional ledger-style interface.
                 Create your first kitab to get started.
               </p>
               <button
                 id="empty-state-create-btn"
                 onClick={() => setShowCreateModal(true)}
-                className="mt-6 flex items-center gap-2 rounded-xl bg-gradient-to-r from-ledger-600 to-ledger-700 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-ledger-900/50 transition-all duration-200 hover:from-ledger-500 hover:to-ledger-600 hover:shadow-ledger-800/50 active:scale-95 cursor-pointer"
+                className="mt-6 flex items-center text-white gap-2 rounded-xl bg-gradient-to-b from-blue-500 via-blue-600 to-amber-400 bg-[length:500%_200%] bg-top px-6 py-3 text-sm font-semibold text-green-900 shadow-lg shadow-green-300/30 transition-all duration-500 ease-in-out hover:bg-bottom hover:shadow-green-300/90 active:scale-95 cursor-pointer"
               >
                 <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                   <path strokeLinecap="round" strokeLinejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
@@ -178,18 +179,18 @@ export default function App() {
               </button>
 
               {/* Decorative elements */}
-              <div className="mt-12 grid grid-cols-3 gap-6 text-center opacity-40">
+              <div className="mt-12 grid grid-cols-3 gap-6 text-center">
                 <div>
                   <div className="text-2xl mb-1">📅</div>
-                  <p className="text-[10px] text-ledger-600">15-Day Cycles</p>
+                  <p className="text-[10px] text-black">15-Day Cycles</p>
                 </div>
                 <div>
                   <div className="text-2xl mb-1">💰</div>
-                  <p className="text-[10px] text-ledger-600">Track Income</p>
+                  <p className="text-[10px] text-black">Track Income</p>
                 </div>
                 <div>
                   <div className="text-2xl mb-1">📊</div>
-                  <p className="text-[10px] text-ledger-600">View Reports</p>
+                  <p className="text-[10px] text-black">View Reports</p>
                 </div>
               </div>
             </div>

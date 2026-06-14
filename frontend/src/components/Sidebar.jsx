@@ -30,7 +30,7 @@ export default function Sidebar({
       <aside
         className={`
           fixed left-0 top-0 z-40 flex h-full w-72 flex-col border-r border-slate-200
-          bg-slate-100 transition-transform duration-300 lg:static lg:translate-x-0
+          bg-slate-300 transition-transform duration-300 lg:static lg:translate-x-0
           ${isMobileOpen ? 'translate-x-0' : '-translate-x-full'}
         `}
       >
@@ -70,10 +70,10 @@ export default function Sidebar({
 
         {/* Kitab list */}
         <div className="flex-1 overflow-y-auto px-3 pb-4">
-          <p className="mb-2 px-2 text-[10px] font-semibold uppercase tracking-widest text-ledger-700">
+          <p className="mb-2 px-2 text-[10px] font-semibold uppercase tracking-widest">
             Your Kitabs ({kitabList.length})
           </p>
-          
+
           {kitabList.length === 0 ? (
             <div className="mt-8 text-center">
               <div className="text-3xl mb-2 opacity-30">📖</div>

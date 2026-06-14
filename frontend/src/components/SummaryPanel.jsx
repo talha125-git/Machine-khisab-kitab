@@ -84,7 +84,11 @@ export default function SummaryPanel({ kitab }) {
         </div>
         <div className="h-3 w-full overflow-hidden rounded-full bg-ledger-900/50 ring-1 ring-ledger-700/20">
           <div
-            className="h-full rounded-full bg-gradient-to-r from-blue-600 via-ledger-500 to-red-700  transition-all duration-700 ease-out"
+            className={`h-full rounded-full transition-all duration-700 ease-out ${
+              stats.progress >= 100
+                ? "bg-gradient-to-r from-green-600 via-green-500 to-green-500"
+                : "bg-gradient-to-r from-blue-600 via-ledger-500 to-ledger-500"
+            }`}
             style={{ width: `${stats.progress}%` }}
           >
             <div className="h-full w-full animate-pulse rounded-full bg-white/10" />
