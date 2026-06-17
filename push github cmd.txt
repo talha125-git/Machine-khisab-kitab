@@ -1,3 +1,11 @@
 git add .
-git commit -m "HIde total income from kitab in side bar display when completed"
+git commit -m "add comments in push to github txt"
 git push -u origin main
+
+
+
+if kitab complte its just read only if you want to edit it make
+ (isReadOnly = false)  instead of (isReadOnly = kitab.completed)
+
+const isReadOnly = false;
+
