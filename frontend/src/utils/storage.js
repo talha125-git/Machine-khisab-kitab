@@ -92,6 +92,7 @@ export async function deleteKitab(id) {
 export async function createKitab(startDate, existingKitabsCount) {
   const id = `kitab_${Date.now()}`;
   const start = new Date(startDate);
+  const user = JSON.parse(localStorage.getItem('khisab_user') || 'null');
   
   // Generate 15 day entries
   const days = [];
@@ -113,6 +114,7 @@ export async function createKitab(startDate, existingKitabsCount) {
   
   const kitab = {
     id,
+    username: user?.username || 'Unknown',
     title: formatKitabTitle(existingKitabsCount + 1, start, endDate),
     number: existingKitabsCount + 1,
     startDate: start.toISOString().split('T')[0],

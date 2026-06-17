@@ -29,50 +29,39 @@ export default function KitabView({ kitab: initialKitab, onDeleted, onUpdated })
       setManualVisibleCount(prev => Math.max(prev, dayIndex + 1));
     }
 
+    // Compute updated kitab
+    const updated = { ...kitab };
+    updated.days = [...kitab.days];
+    updated.days[dayIndex] = { ...kitab.days[dayIndex], ...data };
+
+    // Check if all 15 days are completed
+    const stats = getKitabStats(updated);
+    updated.completed = (stats.daysCompleted === 15);
+
     // Optimistic update locally first
-    let updatedKitab;
-    setKitab(prev => {
-      const updated = { ...prev };
-      updated.days = [...prev.days];
-      updated.days[dayIndex] = { ...prev.days[dayIndex], ...data };
-
-      // Check if all 15 days are completed
-      const stats = getKitabStats(updated);
-      updated.completed = (stats.daysCompleted === 15);
-
-      updatedKitab = updated;
-      if (onUpdated) onUpdated(updated);
-      return updated;
-    });
+    setKitab(updated);
+    if (onUpdated) onUpdated(updated);
 
     // Save to backend
-    if (updatedKitab) {
-      await saveKitab(updatedKitab);
-    }
-  }, [onUpdated]);
+    await saveKitab(updated);
+  }, [kitab, onUpdated]);
 
   const handleReset = async () => {
     setShowConfirm(false);
 
-    let updatedKitab;
-    setKitab(prev => {
-      const updated = { ...prev };
-      updated.days = prev.days.map(d => ({
-        ...d,
-        income: '',
-        notes: '',
-        saved: false
-      }));
-      updated.completed = false;
+    const updated = { ...kitab };
+    updated.days = kitab.days.map(d => ({
+      ...d,
+      income: '',
+      notes: '',
+      saved: false
+    }));
+    updated.completed = false;
 
-      updatedKitab = updated;
-      if (onUpdated) onUpdated(updated);
-      return updated;
-    });
+    setKitab(updated);
+    if (onUpdated) onUpdated(updated);
 
-    if (updatedKitab) {
-      await saveKitab(updatedKitab);
-    }
+    await saveKitab(updated);
   };
 
   return (

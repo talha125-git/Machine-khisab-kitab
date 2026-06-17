@@ -1,5 +1,5 @@
 git add .
-git commit -m "add comments in push to github txt"
+git commit -m " feat: implement KitabView component, storage utilities, and backend Kitab model for income tracking and also view username in mDB"
 git push -u origin main
 
 

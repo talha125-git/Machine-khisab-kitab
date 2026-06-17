@@ -14,6 +14,7 @@ const kitabSchema = new mongoose.Schema({
     ref: 'User',
     required: true,
   },
+  username: String,
   id: {
     type: String,
     required: true,
