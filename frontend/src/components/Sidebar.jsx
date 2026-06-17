@@ -141,9 +141,11 @@ export default function Sidebar({
                           style={{ width: `${stats.progress}%` }}
                         />
                       </div>
-                      <span className="shrink-0 text-[10px] text-ledger-600">
-                        ₨{formatPKR(stats.totalIncome)}
-                      </span>
+                      {stats.progress >= 100 && (
+                        <span className="shrink-0 text-[10px] text-ledger-600">
+                          ₨{formatPKR(stats.totalIncome)}
+                        </span>
+                      )}
                     </div>
                   </div>
                 );
