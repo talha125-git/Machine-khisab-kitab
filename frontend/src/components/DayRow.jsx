@@ -151,7 +151,7 @@ export default function DayRow({ day, index, readOnly, onSave }) {
                 className="rounded-lg border border-red-900/30 bg-transparent px-2.5 py-1.5 text-xs font-medium text-red-500 hover:bg-red-900/30 hover:text-red-400 cursor-pointer"
                 title="Clear Data"
               >
-                🗑️
+                🗑️Empty
               </button>
               <button
                 id={`edit-btn-${day.dayNumber}`}
