@@ -145,7 +145,7 @@ export default function DayRow({ day, index, readOnly, onSave }) {
                 </p>
               )}
             </div>
-            <div className="flex items-center gap-2 opacity-0 transition-all duration-200 group-hover:opacity-100">
+            <div className="flex items-center gap-2 opacity-70 transition-all duration-200">
               <button
                 onClick={handleDeleteData}
                 className="rounded-lg border border-red-900/30 bg-transparent px-2.5 py-1.5 text-xs font-medium text-red-500 hover:bg-red-900/30 hover:text-red-400 cursor-pointer"
@@ -156,7 +156,7 @@ export default function DayRow({ day, index, readOnly, onSave }) {
               <button
                 id={`edit-btn-${day.dayNumber}`}
                 onClick={handleEdit}
-                className="rounded-lg border border-ledger-700/30 bg-transparent px-3 py-1.5 text-xs font-medium text-ledger-500 hover:bg-ledger-800/30 hover:text-ledger-400 cursor-pointer"
+                className="rounded-lg border border-ledger-700/30 bg-transparent px-3 py-1.5 text-xs font-medium text-ledger-500 hover:bg-green-300 hover:text-ledger-400 cursor-pointer"
               >
                 ✏️ Edit
               </button>

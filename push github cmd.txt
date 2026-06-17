@@ -1,3 +1,3 @@
 git add .
-git commit -m "feat: implement core ledger interface including day row management, kitab viewing, and data persistence functionality"
+git commit -m "Visible del and edit btn in DayRow"
 git push -u origin main
