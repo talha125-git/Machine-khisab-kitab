@@ -17,6 +17,7 @@ export default function KitabView({ kitab: initialKitab, onDeleted, onUpdated })
   }
 
   const isReadOnly = kitab.completed;
+  // const isReadOnly = false;
 
   let lastSaved = 0;
   kitab.days.forEach((d, i) => { if (d.saved) lastSaved = i + 1; });
